@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.f-text {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3125rem;
+}
+
+.f-xs {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3125rem;
+}
+
+.f-s {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+}
+
+.f-m {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.9375rem;
+}
+
+.f-l {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 4.4375rem;
+}

@@ -17,7 +17,8 @@ export default function Document() {
         rel="stylesheet"
       />
       <link rel="icon" href="favicon.ico" />
-      <body>
+      <title>Connect Four Game</title>
+      <body className="font-sans">
         <Main />
         <NextScript />
       </body>
