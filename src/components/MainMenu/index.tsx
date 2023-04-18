@@ -13,9 +13,9 @@ const MainMenu = () => {
         <div className="relative flex h-full w-full flex-col items-center">
           <Link
             href="/ingame"
-            className="f-m absolute flex h-[4.5rem] w-full max-w-[25rem] items-center justify-between
-            rounded-[1.25rem] border-[3px] border-black bg-cYellow p-[1.25rem]
-            text-left shadow-custom active:mt-[0.3125rem] active:shadow-customActive"
+            className="absolute flex h-[4.5rem] w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
+            border-[3px] border-black bg-cYellow p-[1.25rem] text-left text-mm
+            font-bold shadow-custom active:mt-[0.3125rem] active:shadow-customActive"
           >
             PLAY VS PLAYER
             <Image
@@ -27,9 +27,9 @@ const MainMenu = () => {
           </Link>
           <Link
             href="/ingame"
-            className="f-m absolute top-1/3 flex h-[4.5rem] w-full max-w-[25rem] items-center justify-between
-            rounded-[1.25rem] border-[3px] border-black bg-cRed p-[1.25rem]
-            text-left shadow-custom active:mt-[0.3125rem] active:shadow-customActive"
+            className="absolute top-1/3 flex h-[4.5rem] w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
+            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-mm
+            font-bold shadow-custom active:mt-[0.3125rem] active:shadow-customActive"
           >
             PLAY VS CPU
             <Image
@@ -40,9 +40,9 @@ const MainMenu = () => {
             />
           </Link>
           <Link
-            className="f-m absolute top-2/3 h-[4.5rem] w-full max-w-[25rem]
-           rounded-[1.25rem] border-[3px] border-black bg-white p-[1.25rem]
-           text-left shadow-custom active:mt-[0.3125rem] active:shadow-customActive"
+            className="absolute top-2/3 h-[4.5rem] w-full max-w-[25rem] rounded-[1.25rem]
+           border-[3px] border-black bg-white p-[1.25rem] text-left text-mm
+           font-bold shadow-custom active:mt-[0.3125rem] active:shadow-customActive"
             href="/rules"
           >
             GAME RULES

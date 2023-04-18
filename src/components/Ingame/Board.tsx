@@ -1,11 +1,65 @@
 import Image from "next/image";
+import { useState } from "react";
 import { useAppContext } from "~/context/AppContext";
 
 const Board = () => {
-  const { isMobile } = useAppContext();
+  const { isMobile, player1IsRed, isPlayer1Turn } = useAppContext();
+  let indicatorText = "";
+  let indicatorBg = "";
+  let markerSrc = "";
+  const [markerPosition, setMarkerPosition] = useState("left-[-99rem]");
+  if (isPlayer1Turn) {
+    indicatorText = "PLAYER 1'S TURN";
+    if (player1IsRed) {
+      indicatorBg = "bg-[url('/images/turn-background-red.svg')]";
+      markerSrc = "images/marker-red.svg";
+    } else {
+      indicatorBg = "bg-[url('/images/turn-background-yellow.svg')]";
+      markerSrc = "images/marker-yellow.svg";
+    }
+  } else {
+    indicatorText = "PLAYER 2'S TURN";
+    if (player1IsRed) {
+      indicatorBg = "bg-[url('/images/turn-background-yellow.svg')]";
+      markerSrc = "images/marker-yellow.svg";
+    } else {
+      indicatorBg = "bg-[url('/images/turn-background-red.svg')]";
+      markerSrc = "images/marker-red.svg";
+    }
+  }
 
   return (
-    <div className="relative order-last h-[19.375rem] w-[20.9375rem] sm:order-none sm:h-[36.5rem] sm:w-[39.5rem]">
+    <div
+      className="relative order-last h-[19.375rem] w-[20.9375rem] cursor-pointer sm:order-none sm:h-[36.5rem] sm:w-[39.5rem]"
+      onMouseLeave={() => setMarkerPosition("left-[-99rem]")}
+      onMouseMove={(event) => {
+        const currentTargetRect = event.currentTarget.getBoundingClientRect();
+        const event_offsetX = event.pageX - currentTargetRect.left;
+        switch (true) {
+          case event_offsetX > 17 && 105 > event_offsetX:
+            setMarkerPosition("left-[calc(17px+88px*0)]");
+            break;
+          case event_offsetX > 105 && 193 > event_offsetX:
+            setMarkerPosition("left-[calc(17px+88px*1)]");
+            break;
+          case event_offsetX > 193 && 281 > event_offsetX:
+            setMarkerPosition("left-[calc(17px+88px*2)]");
+            break;
+          case event_offsetX > 281 && 369 > event_offsetX:
+            setMarkerPosition("left-[calc(17px+88px*3)]");
+            break;
+          case event_offsetX > 369 && 457 > event_offsetX:
+            setMarkerPosition("left-[calc(17px+88px*4)]");
+            break;
+          case event_offsetX > 457 && 545 > event_offsetX:
+            setMarkerPosition("left-[calc(17px+88px*5)]");
+            break;
+          case event_offsetX > 545 && 633 > event_offsetX:
+            setMarkerPosition("left-[calc(17px+88px*6)]");
+            break;
+        }
+      }}
+    >
       <Image
         src={
           isMobile
@@ -42,6 +96,21 @@ const Board = () => {
           fill
         />
       </div>
+      <div
+        className={`absolute bottom-0 left-1/2 z-40 h-[9.375rem] w-[11.9375rem]
+      translate-x-[-50%] translate-y-[90%] py-[2.5rem] text-center
+      ${indicatorBg} bg-[length:11.9375rem_9.375rem]`}
+      >
+        <h3 className="text-xs font-bold">{indicatorText}</h3>
+        <h2 className="text-lg font-bold">15s</h2>
+      </div>
+      <Image
+        src={markerSrc}
+        alt="Active Column Marker"
+        height={26}
+        width={32}
+        className={`absolute ${markerPosition} top-0 hidden translate-x-[60%] translate-y-[-100%] lg:block`}
+      />
     </div>
   );
 };

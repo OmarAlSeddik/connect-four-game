@@ -21,19 +21,26 @@ const Score = ({ player }: { player: number }) => {
 
   return (
     <div
-      className="relative flex h-[11.6875rem] w-[8.8125rem]
-flex-col items-center gap-[2rem] rounded-[2.5rem] border-[3px] border-black
-bg-white px-[1rem] pt-[2rem] shadow-custom"
+      className={`${
+        player == 1 ? "sm:flex-row" : "sm:flex-row-reverse"
+      } relative flex flex-col items-center rounded-[1.25rem]
+      border-[3px] border-black bg-white px-[2rem] py-[0.25rem]
+      shadow-custom sm:gap-[1rem]  sm:px-[3rem] sm:py-[1rem] lg:flex-col
+      lg:px-[1.5rem] lg:pb-[1rem] lg:pt-[3rem]`}
     >
       <Image
         src={src}
         alt={text}
-        width={64}
-        height={64}
-        className="absolute left-1/2 top-0 translate-x-[-50%] translate-y-[-50%]"
+        width={54}
+        height={59}
+        className={`absolute ${
+          player == 1 ? "right-full" : "left-full"
+        } top-1/2 ${
+          player == 1 ? "translate-x-[50%]" : "translate-x-[-50%]"
+        } translate-y-[-50%] lg:left-1/2 lg:top-0 lg:translate-x-[-50%]`}
       />
-      <h2 className="f-s">{text}</h2>
-      <h2 className="f-l">{score}</h2>
+      <h2 className="font-bold sm:text-sm">{text}</h2>
+      <h2 className="text-mm font-bold sm:text-lg">{score}</h2>
     </div>
   );
 };

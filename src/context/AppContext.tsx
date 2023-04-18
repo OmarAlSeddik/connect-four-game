@@ -30,7 +30,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
   const [board, setBoard] = useState<string[][]>([[], [], [], [], [], [], []]);
   const [player1Score, setPlayer1Score] = useState(15);
   const [player2Score, setPlayer2Score] = useState(23);
-  const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
+  const [isPlayer1Turn, setIsPlayer1Turn] = useState(false);
   const [player1IsRed, setPlayer1IsRed] = useState(true);
   const [vsAi, setVsAi] = useState(false);
   const isMobile =
