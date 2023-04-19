@@ -13,14 +13,15 @@ export default {
     },
     extend: {
       colors: {
-        cDark: "#2e7cd6",
-        cLight: "#479dff",
+        cDark: "#5c2dd5",
+        cLight: "#7945ff",
         cRed: "#fd6687",
         cYellow: "#ffce67",
       },
       boxShadow: {
         custom: "0 0.625rem 0 #000",
-        customActive: "0 0.3125rem 0 #000",
+        customHover: "0 0.625rem 0 #5c2dd5",
+        customActive: "0 0.3125rem 0 #5c2dd5",
       },
       fontSize: {
         mm: ["1.5rem", "1.9375rem"],

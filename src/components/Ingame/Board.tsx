@@ -3,62 +3,82 @@ import { useState } from "react";
 import { useAppContext } from "~/context/AppContext";
 
 const Board = () => {
-  const { isMobile, player1IsRed, isPlayer1Turn } = useAppContext();
+  const { isMobile, isPlayer1Turn, play } = useAppContext();
   let indicatorText = "";
   let indicatorBg = "";
   let markerSrc = "";
-  const [markerPosition, setMarkerPosition] = useState("left-[-99rem]");
+  const [markerPosition, setMarkerPosition] = useState("lg:hidden");
   if (isPlayer1Turn) {
     indicatorText = "PLAYER 1'S TURN";
-    if (player1IsRed) {
-      indicatorBg = "bg-[url('/images/turn-background-red.svg')]";
-      markerSrc = "images/marker-red.svg";
-    } else {
-      indicatorBg = "bg-[url('/images/turn-background-yellow.svg')]";
-      markerSrc = "images/marker-yellow.svg";
-    }
+    indicatorBg = "bg-[url('/images/turn-background-red.svg')]";
+    markerSrc = "images/marker-red.svg";
   } else {
     indicatorText = "PLAYER 2'S TURN";
-    if (player1IsRed) {
-      indicatorBg = "bg-[url('/images/turn-background-yellow.svg')]";
-      markerSrc = "images/marker-yellow.svg";
-    } else {
-      indicatorBg = "bg-[url('/images/turn-background-red.svg')]";
-      markerSrc = "images/marker-red.svg";
-    }
+    indicatorBg = "bg-[url('/images/turn-background-yellow.svg')]";
+    markerSrc = "images/marker-yellow.svg";
   }
+  const handleOnMouseMove = (event: React.MouseEvent<HTMLElement>) => {
+    const currentTargetRect = event.currentTarget.getBoundingClientRect();
+    const event_offsetX = event.pageX - currentTargetRect.left;
+    switch (true) {
+      case event_offsetX > 17 && 105 > event_offsetX:
+        setMarkerPosition("left-[calc(17px+88px*0)]");
+        break;
+      case event_offsetX > 105 && 193 > event_offsetX:
+        setMarkerPosition("left-[calc(17px+88px*1)]");
+        break;
+      case event_offsetX > 193 && 281 > event_offsetX:
+        setMarkerPosition("left-[calc(17px+88px*2)]");
+        break;
+      case event_offsetX > 281 && 369 > event_offsetX:
+        setMarkerPosition("left-[calc(17px+88px*3)]");
+        break;
+      case event_offsetX > 369 && 457 > event_offsetX:
+        setMarkerPosition("left-[calc(17px+88px*4)]");
+        break;
+      case event_offsetX > 457 && 545 > event_offsetX:
+        setMarkerPosition("left-[calc(17px+88px*5)]");
+        break;
+      case event_offsetX > 545 && 633 > event_offsetX:
+        setMarkerPosition("left-[calc(17px+88px*6)]");
+        break;
+    }
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    const currentTargetRect = event.currentTarget.getBoundingClientRect();
+    const event_offsetX = event.pageX - currentTargetRect.left;
+    switch (true) {
+      case event_offsetX > 17 && 105 > event_offsetX:
+        play(0);
+        break;
+      case event_offsetX > 105 && 193 > event_offsetX:
+        play(1);
+        break;
+      case event_offsetX > 193 && 281 > event_offsetX:
+        play(2);
+        break;
+      case event_offsetX > 281 && 369 > event_offsetX:
+        play(3);
+        break;
+      case event_offsetX > 369 && 457 > event_offsetX:
+        play(4);
+        break;
+      case event_offsetX > 457 && 545 > event_offsetX:
+        play(5);
+        break;
+      case event_offsetX > 545 && 633 > event_offsetX:
+        play(6);
+        break;
+    }
+  };
 
   return (
     <div
       className="relative order-last h-[19.375rem] w-[20.9375rem] cursor-pointer sm:order-none sm:h-[36.5rem] sm:w-[39.5rem]"
       onMouseLeave={() => setMarkerPosition("left-[-99rem]")}
-      onMouseMove={(event) => {
-        const currentTargetRect = event.currentTarget.getBoundingClientRect();
-        const event_offsetX = event.pageX - currentTargetRect.left;
-        switch (true) {
-          case event_offsetX > 17 && 105 > event_offsetX:
-            setMarkerPosition("left-[calc(17px+88px*0)]");
-            break;
-          case event_offsetX > 105 && 193 > event_offsetX:
-            setMarkerPosition("left-[calc(17px+88px*1)]");
-            break;
-          case event_offsetX > 193 && 281 > event_offsetX:
-            setMarkerPosition("left-[calc(17px+88px*2)]");
-            break;
-          case event_offsetX > 281 && 369 > event_offsetX:
-            setMarkerPosition("left-[calc(17px+88px*3)]");
-            break;
-          case event_offsetX > 369 && 457 > event_offsetX:
-            setMarkerPosition("left-[calc(17px+88px*4)]");
-            break;
-          case event_offsetX > 457 && 545 > event_offsetX:
-            setMarkerPosition("left-[calc(17px+88px*5)]");
-            break;
-          case event_offsetX > 545 && 633 > event_offsetX:
-            setMarkerPosition("left-[calc(17px+88px*6)]");
-            break;
-        }
-      }}
+      onMouseMove={handleOnMouseMove}
+      onClick={handleClick}
     >
       <Image
         src={
