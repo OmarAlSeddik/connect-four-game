@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useAppContext } from "~/context/AppContext";
+import Chip from "./Chip";
 
 const Board = () => {
-  const { isMobile, isPlayer1Turn, play } = useAppContext();
+  const { isMobile, isPlayer1Turn, play, board } = useAppContext();
   let indicatorText = "";
   let indicatorBg = "";
   let markerSrc = "";
@@ -48,28 +49,54 @@ const Board = () => {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const currentTargetRect = event.currentTarget.getBoundingClientRect();
     const event_offsetX = event.pageX - currentTargetRect.left;
-    switch (true) {
-      case event_offsetX > 17 && 105 > event_offsetX:
-        play(0);
-        break;
-      case event_offsetX > 105 && 193 > event_offsetX:
-        play(1);
-        break;
-      case event_offsetX > 193 && 281 > event_offsetX:
-        play(2);
-        break;
-      case event_offsetX > 281 && 369 > event_offsetX:
-        play(3);
-        break;
-      case event_offsetX > 369 && 457 > event_offsetX:
-        play(4);
-        break;
-      case event_offsetX > 457 && 545 > event_offsetX:
-        play(5);
-        break;
-      case event_offsetX > 545 && 633 > event_offsetX:
-        play(6);
-        break;
+    if (isMobile) {
+      switch (true) {
+        case event_offsetX > 9 && 55.6 > event_offsetX:
+          play(0);
+          break;
+        case event_offsetX > 55.6 && 102.2 > event_offsetX:
+          play(1);
+          break;
+        case event_offsetX > 102.2 && 148.8 > event_offsetX:
+          play(2);
+          break;
+        case event_offsetX > 148.8 && 195.4 > event_offsetX:
+          play(3);
+          break;
+        case event_offsetX > 195.4 && 242 > event_offsetX:
+          play(4);
+          break;
+        case event_offsetX > 242 && 288.6 > event_offsetX:
+          play(5);
+          break;
+        case event_offsetX > 288.6 && 335.2 > event_offsetX:
+          play(6);
+          break;
+      }
+    } else {
+      switch (true) {
+        case event_offsetX > 17 && 105 > event_offsetX:
+          play(0);
+          break;
+        case event_offsetX > 105 && 193 > event_offsetX:
+          play(1);
+          break;
+        case event_offsetX > 193 && 281 > event_offsetX:
+          play(2);
+          break;
+        case event_offsetX > 281 && 369 > event_offsetX:
+          play(3);
+          break;
+        case event_offsetX > 369 && 457 > event_offsetX:
+          play(4);
+          break;
+        case event_offsetX > 457 && 545 > event_offsetX:
+          play(5);
+          break;
+        case event_offsetX > 545 && 633 > event_offsetX:
+          play(6);
+          break;
+      }
     }
   };
 
@@ -103,20 +130,6 @@ const Board = () => {
         className="absolute z-30"
       />
       <div
-        className="absolute bottom-[calc(27px+47px*5)] left-[calc(9px+46.5px*6)] z-20
-          h-[40px] w-[38px] sm:bottom-[calc(52px+88px*5)] sm:left-[calc(17px+88px*6)] sm:h-[75px] sm:w-[70px]"
-      >
-        <Image
-          src={
-            isMobile
-              ? "images/counter-red-small.svg"
-              : "images/counter-red-large.svg"
-          }
-          alt="Chip"
-          fill
-        />
-      </div>
-      <div
         className={`absolute bottom-0 left-1/2 z-40 h-[9.375rem] w-[11.9375rem]
       translate-x-[-50%] translate-y-[90%] py-[2.5rem] text-center
       ${indicatorBg} bg-[length:11.9375rem_9.375rem]`}
@@ -131,6 +144,11 @@ const Board = () => {
         width={32}
         className={`absolute ${markerPosition} top-0 hidden translate-x-[60%] translate-y-[-100%] lg:block`}
       />
+      {board.map((col, i) =>
+        col.map((color, j) => (
+          <Chip key={`${i}${j}`} col={i} row={j} color={color} />
+        ))
+      )}
     </div>
   );
 };

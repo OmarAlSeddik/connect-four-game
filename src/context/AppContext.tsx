@@ -36,14 +36,14 @@ export const AppContextProvider = ({ children }: PropsType) => {
   const isMobile =
     typeof window !== "undefined" ? window.innerWidth < 640 : false;
 
-  const play = (column: number) => {
+  const play = (col: number) => {
     setBoard((prev) => {
-      if (prev[column].length < 6)
-        prev[column]?.push(isPlayer1Turn ? "red" : "yellow");
-      return prev;
+      const current = [...prev];
+      current[col] = [...prev[col]];
+      current[col][current[col].length] = isPlayer1Turn ? "red" : "yellow";
+      setIsPlayer1Turn((prev) => !prev);
+      return [...current];
     });
-    console.log(board);
-    setIsPlayer1Turn((prev) => !prev);
   };
 
   const startVsCPU = () => {
