@@ -1,7 +1,7 @@
 import { useAppContext } from "~/context/AppContext";
 
 const TurnIndicator = () => {
-  const { isPlayer1Turn, timer, gameOver } = useAppContext();
+  const { isPlayer1Turn, timer, gameOver, restart } = useAppContext();
   let indicatorText = "";
   let indicatorBg = "";
   if (isPlayer1Turn) {
@@ -12,7 +12,7 @@ const TurnIndicator = () => {
     indicatorBg = "bg-[url('/images/turn-background-yellow.svg')]";
   }
 
-  if (gameOver)
+  if (gameOver.winner)
     return (
       <div
         className="absolute bottom-0 left-1/2 z-40 flex translate-x-[-50%]
@@ -20,12 +20,13 @@ const TurnIndicator = () => {
         border-black bg-white p-[2rem] px-[5rem] text-center shadow-custom"
       >
         <h3 className="text-xs font-bold">
-          {gameOver == 1 ? "PLAYER 1" : "PLAYER2"}
+          {gameOver.winner == 1 ? "PLAYER 1" : "PLAYER 2"}
         </h3>
         <h2 className="text-lg font-bold">WINS</h2>
         <button
           className="rounded-[1.25rem] bg-cDark px-[1rem] py-[0.5rem] text-xs
         font-bold text-white transition-all hover:bg-cRed"
+          onClick={restart}
         >
           PLAY AGAIN
         </button>

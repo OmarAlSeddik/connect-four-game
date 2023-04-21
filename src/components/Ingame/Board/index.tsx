@@ -92,7 +92,7 @@ const Board = () => {
   };
 
   return (
-    <div className="relative order-last h-[19.375rem] w-[20.9375rem] cursor-pointer sm:order-none sm:h-[36.5rem] sm:w-[39.5rem]">
+    <div className="relative h-[19.375rem] w-[20.9375rem] cursor-pointer sm:order-none sm:h-[36.5rem] sm:w-[39.5rem]">
       <Image
         src={
           isMobile

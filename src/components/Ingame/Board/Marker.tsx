@@ -2,13 +2,15 @@ import Image from "next/image";
 import { useAppContext } from "~/context/AppContext";
 
 const Marker = ({ markerPosition }: { markerPosition: string }) => {
-  const { isPlayer1Turn } = useAppContext();
+  const { isPlayer1Turn, gameOver } = useAppContext();
   let markerSrc = "";
   if (isPlayer1Turn) {
     markerSrc = "images/marker-red.svg";
   } else {
     markerSrc = "images/marker-yellow.svg";
   }
+
+  if (gameOver.winner) return <></>;
 
   return (
     <Image

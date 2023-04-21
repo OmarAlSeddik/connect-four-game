@@ -1,19 +1,15 @@
 import Link from "next/link";
+import { useAppContext } from "~/context/AppContext";
 
-const Modal = ({
-  modalActive,
-  toggleModal,
-}: {
-  modalActive: boolean;
-  toggleModal: () => void;
-}) => {
-  if (!modalActive) return <></>;
+const Modal = () => {
+  const { isPaused, togglePause, restart } = useAppContext();
+  if (!isPaused) return <></>;
 
   return (
     <>
       <div
         className="fixed bottom-0 left-0 right-0 top-0 z-50 bg-[rgba(0,0,0,0.5)]"
-        onClick={toggleModal}
+        onClick={togglePause}
       />
       <div
         className="absolute left-1/2 top-1/2 z-50 flex h-[30.6875rem] w-[30rem]
@@ -24,7 +20,7 @@ const Modal = ({
         <h1 className="text-lg font-bold text-white">PAUSE</h1>
         <div className="relative flex h-full w-full flex-col items-center gap-[1.875rem]">
           <button
-            onClick={toggleModal}
+            onClick={togglePause}
             className="absolute h-[4.5rem] w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
             border-[3px] border-black bg-white p-[1.25rem] text-center text-mm font-bold shadow-custom
             transition-all hover:shadow-customHover active:mt-[0.3125rem] active:shadow-customActive"
@@ -35,6 +31,10 @@ const Modal = ({
             className="absolute top-1/3 h-[4.5rem] w-full max-w-[25rem] rounded-[1.25rem]
             border-[3px] border-black bg-white p-[1.25rem] text-center text-mm font-bold shadow-custom
             transition-all hover:shadow-customHover active:mt-[0.3125rem] active:shadow-customActive"
+            onClick={() => {
+              restart();
+              togglePause();
+            }}
           >
             RESTART
           </button>
