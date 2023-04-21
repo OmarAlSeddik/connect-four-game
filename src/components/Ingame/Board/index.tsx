@@ -2,22 +2,13 @@ import Image from "next/image";
 import { useState } from "react";
 import { useAppContext } from "~/context/AppContext";
 import Chip from "./Chip";
+import Marker from "./Marker";
+import TurnIndicator from "./TurnIndicator";
 
 const Board = () => {
-  const { isMobile, isPlayer1Turn, play, board } = useAppContext();
-  let indicatorText = "";
-  let indicatorBg = "";
-  let markerSrc = "";
+  const { isMobile, play, board } = useAppContext();
   const [markerPosition, setMarkerPosition] = useState("lg:hidden");
-  if (isPlayer1Turn) {
-    indicatorText = "PLAYER 1'S TURN";
-    indicatorBg = "bg-[url('/images/turn-background-red.svg')]";
-    markerSrc = "images/marker-red.svg";
-  } else {
-    indicatorText = "PLAYER 2'S TURN";
-    indicatorBg = "bg-[url('/images/turn-background-yellow.svg')]";
-    markerSrc = "images/marker-yellow.svg";
-  }
+
   const handleOnMouseMove = (event: React.MouseEvent<HTMLElement>) => {
     const currentTargetRect = event.currentTarget.getBoundingClientRect();
     const event_offsetX = event.pageX - currentTargetRect.left;
@@ -101,12 +92,7 @@ const Board = () => {
   };
 
   return (
-    <div
-      className="relative order-last h-[19.375rem] w-[20.9375rem] cursor-pointer sm:order-none sm:h-[36.5rem] sm:w-[39.5rem]"
-      onMouseLeave={() => setMarkerPosition("left-[-99rem]")}
-      onMouseMove={handleOnMouseMove}
-      onClick={handleClick}
-    >
+    <div className="relative order-last h-[19.375rem] w-[20.9375rem] cursor-pointer sm:order-none sm:h-[36.5rem] sm:w-[39.5rem]">
       <Image
         src={
           isMobile
@@ -128,26 +114,23 @@ const Board = () => {
         width={isMobile ? 335 : 632}
         height={isMobile ? 310 : 584}
         className="absolute z-30"
+        onMouseLeave={() => setMarkerPosition("lg:hidden")}
+        onMouseMove={handleOnMouseMove}
+        onClick={handleClick}
       />
-      <div
-        className={`absolute bottom-0 left-1/2 z-40 h-[9.375rem] w-[11.9375rem]
-      translate-x-[-50%] translate-y-[90%] py-[2.5rem] text-center
-      ${indicatorBg} bg-[length:11.9375rem_9.375rem]`}
-      >
-        <h3 className="text-xs font-bold">{indicatorText}</h3>
-        <h2 className="text-lg font-bold">15s</h2>
-      </div>
-      <Image
-        src={markerSrc}
-        alt="Active Column Marker"
-        height={26}
-        width={32}
-        className={`absolute ${markerPosition} top-0 hidden translate-x-[60%] translate-y-[-100%] lg:block`}
-      />
+      <TurnIndicator />
+      <Marker markerPosition={markerPosition} />
       {board.map((col, i) =>
-        col.map((color, j) => (
-          <Chip key={`${i}${j}`} col={i} row={j} color={color} />
-        ))
+        col
+          .filter((chip) => chip != 0)
+          .map((chip, j) => (
+            <Chip
+              key={`${i}${j}`}
+              col={i}
+              row={j}
+              color={chip == 1 ? "red" : "yellow"}
+            />
+          ))
       )}
     </div>
   );
