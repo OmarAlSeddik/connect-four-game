@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import checkWinCondition from "~/library/checkWinCondition";
 
 type ContextType = {
   board: number[][];
@@ -85,6 +92,37 @@ export const AppContextProvider = ({ children }: PropsType) => {
   const isMobile =
     typeof window !== "undefined" ? window.innerWidth < 640 : false;
 
+  const play = useCallback(
+    (col: number) => {
+      if (board?.[col]?.[5] == 0 && !gameOver.winner) {
+        setBoard((prev) => {
+          const current = [...prev];
+          current[col] = [...prev[col]];
+          for (let row = 0; row < current?.[col].length; row++) {
+            if (current?.[col]?.[row] == 0) {
+              current[col][row] = isPlayer1Turn ? 1 : 2;
+              break;
+            }
+          }
+          return [...current];
+        });
+        setIsPlayer1Turn((prev) => !prev);
+        setTimer(15);
+      }
+    },
+    [board, gameOver.winner, isPlayer1Turn]
+  );
+
+  const cpuAction = useCallback(() => {
+    let col: number;
+    do {
+      col = Math.floor(Math.random() * 6);
+    } while (board?.[col]?.[5] != 0);
+    setTimeout(() => {
+      play(col);
+    }, 500);
+  }, [board, play]);
+
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
     if (timer && !isPaused) {
@@ -106,7 +144,21 @@ export const AppContextProvider = ({ children }: PropsType) => {
       setPlayer1Initiative((prev) => !prev);
     }
     return () => clearInterval(interval);
-  }, [gameOver, isPaused, isPlayer1Turn, timer]);
+  }, [gameOver.winner, isPaused, isPlayer1Turn, timer]);
+
+  useEffect(() => {
+    const { winner, winningChips } = checkWinCondition(board);
+    if (winner && !gameOver.winner) {
+      setGameOver({
+        winner,
+        winningChips,
+      });
+      setPlayer1Initiative((prev) => !prev);
+      winner == 1
+        ? setPlayer1Score((prev) => prev + 1)
+        : setPlayer2Score((prev) => prev + 1);
+    } else if (!isPlayer1Turn && vsCPU) cpuAction();
+  }, [board, cpuAction, gameOver.winner, isPlayer1Turn, vsCPU]);
 
   const start = (vsCPU: boolean) => {
     setBoard([
@@ -151,136 +203,6 @@ export const AppContextProvider = ({ children }: PropsType) => {
       winningChips: [],
     });
     setIsPlayer1Turn(player1Initiative);
-  };
-
-  useEffect(() => {
-    const checkWinCondition = () => {
-      const checkLine = (a = 0, b = 0, c = 0, d = 0) => {
-        return a != 0 && a == b && a == c && a == d;
-      };
-      for (let col = 0; col < 4; col++) {
-        for (let row = 0; row < 6; row++) {
-          if (
-            checkLine(
-              board?.[col]?.[row],
-              board?.[col + 1]?.[row],
-              board?.[col + 2]?.[row],
-              board?.[col + 3]?.[row]
-            )
-          ) {
-            setGameOver((prev) => ({
-              ...prev,
-              winningChips: [
-                `${col} ${row}`,
-                `${col + 1} ${row}`,
-                `${col + 2} ${row}`,
-                `${col + 3} ${row}`,
-              ],
-            }));
-            return board?.[col]?.[row];
-          }
-        }
-      }
-      for (let col = 0; col < 7; col++) {
-        for (let row = 0; row < 3; row++) {
-          if (
-            checkLine(
-              board?.[col]?.[row],
-              board?.[col]?.[row + 1],
-              board?.[col]?.[row + 2],
-              board?.[col]?.[row + 3]
-            )
-          ) {
-            setGameOver((prev) => ({
-              ...prev,
-              winningChips: [
-                `${col} ${row}`,
-                `${col} ${row + 1}`,
-                `${col} ${row + 2}`,
-                `${col} ${row + 3}`,
-              ],
-            }));
-            return board?.[col]?.[row];
-          }
-        }
-      }
-      for (let col = 0; col < 4; col++) {
-        for (let row = 0; row < 3; row++) {
-          if (
-            checkLine(
-              board?.[col]?.[row],
-              board?.[col + 1]?.[row + 1],
-              board?.[col + 2]?.[row + 2],
-              board?.[col + 3]?.[row + 3]
-            )
-          ) {
-            setGameOver((prev) => ({
-              ...prev,
-              winningChips: [
-                `${col} ${row}`,
-                `${col + 1} ${row + 1}`,
-                `${col + 2} ${row + 2}`,
-                `${col + 3} ${row + 3}`,
-              ],
-            }));
-            return board?.[col]?.[row];
-          }
-        }
-      }
-      for (let col = 3; col < 7; col++) {
-        for (let row = 0; row < 3; row++) {
-          if (
-            checkLine(
-              board?.[col]?.[row],
-              board?.[col - 1]?.[row + 1],
-              board?.[col - 2]?.[row + 2],
-              board?.[col - 3]?.[row + 3]
-            )
-          ) {
-            setGameOver((prev) => ({
-              ...prev,
-              winningChips: [
-                `${col} ${row}`,
-                `${col - 1} ${row + 1}`,
-                `${col - 2} ${row + 2}`,
-                `${col - 3} ${row + 3}`,
-              ],
-            }));
-            return board?.[col]?.[row];
-          }
-        }
-      }
-      return 0;
-    };
-    const result = checkWinCondition();
-    if (result) {
-      setGameOver((prev) => ({
-        ...prev,
-        winner: result,
-      }));
-      setPlayer1Initiative((prev) => !prev);
-      result == 1
-        ? setPlayer1Score((prev) => prev + 1)
-        : setPlayer2Score((prev) => prev + 1);
-    }
-  }, [board]);
-
-  const play = (col: number) => {
-    if (board?.[col]?.[5] == 0 && !gameOver.winner) {
-      setBoard((prev) => {
-        const current = [...prev];
-        current[col] = [...prev[col]];
-        for (let row = 0; row < current?.[col].length; row++) {
-          if (current?.[col]?.[row] == 0) {
-            current[col][row] = isPlayer1Turn ? 1 : 2;
-            break;
-          }
-        }
-        return [...current];
-      });
-      setIsPlayer1Turn((prev) => !prev);
-      setTimer(15);
-    }
   };
 
   return (
