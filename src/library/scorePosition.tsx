@@ -12,16 +12,20 @@ const scorePosition = (board: number[][]) => {
     const emptyCount = getCount(slice ?? [], empty);
     const playerCount = getCount(slice ?? [], playerChip);
     if (cpuCount === 4) score += 1000;
-    else if (cpuCount === 3 && emptyCount === 1) score += 10;
+    else if (cpuCount === 3 && emptyCount === 1) score += 5;
     else if (cpuCount === 2 && emptyCount === 2) score += 1;
 
-    if (playerCount === 3 && emptyCount === 1) score -= 100;
-    else if (playerCount === 2 && emptyCount === 2) score -= 5;
+    if (playerCount === 3 && emptyCount === 1) score -= 5;
   };
 
   // Score Center
-  const cpuCount = getCount(board[3] ?? [], cpuChip);
-  score += cpuCount * 5;
+  const centerCount = getCount(board[3] ?? [], cpuChip);
+  score += centerCount * 5;
+
+  // Score Outer
+  const outerCount =
+    getCount(board[0] ?? [], cpuChip) + getCount(board[6] ?? [], cpuChip);
+  score -= outerCount * 5;
 
   // Score Vertical
   for (let col = 0; col < 7; col++) {

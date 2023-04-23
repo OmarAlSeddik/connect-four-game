@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import checkWinCondition from "~/library/checkWinCondition";
-import pickBestMove from "~/library/pickBestMove";
+import minimax from "~/library/minimax";
 
 type ContextType = {
   board: number[][];
@@ -115,7 +115,8 @@ export const AppContextProvider = ({ children }: PropsType) => {
   );
 
   const cpuAction = useCallback(() => {
-    const bestMove = pickBestMove(board, 2);
+    // const bestMove = pickBestMove(board, 2);
+    const [bestMove] = minimax(board, 5, true);
     setTimeout(() => {
       play(bestMove);
     }, 500);

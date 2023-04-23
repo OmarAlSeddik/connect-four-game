@@ -1,3 +1,5 @@
+import getValidLocations from "./getValidLocations";
+
 const checkWinCondition = (board: number[][]) => {
   const checkLine = (a = 0, b = 0, c = 0, d = 0) => {
     return a !== 0 && a === b && a === c && a === d;
@@ -90,6 +92,11 @@ const checkWinCondition = (board: number[][]) => {
         };
     }
   }
+  if (getValidLocations.length === 0)
+    return {
+      winner: 3,
+      winningChips: [],
+    };
   return { winner: 0, winningChips: [] };
 };
 

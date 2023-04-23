@@ -19,10 +19,16 @@ const TurnIndicator = () => {
         translate-y-[90%] flex-col rounded-[1.25rem] border-[3px]
         border-black bg-white p-[2rem] px-[5rem] text-center shadow-custom"
       >
-        <h3 className="text-xs font-bold">
+        <h3
+          className={`text-xs font-bold ${
+            gameOver.winner === 3 ? "hidden" : ""
+          }`}
+        >
           {gameOver.winner === 1 ? "PLAYER 1" : "PLAYER 2"}
         </h3>
-        <h2 className="text-lg font-bold">WINS</h2>
+        <h2 className="text-lg font-bold">
+          {gameOver.winner === 3 ? "TIE" : "WINS"}
+        </h2>
         <button
           className="rounded-[1.25rem] bg-cDark px-[1rem] py-[0.5rem] text-xs
         font-bold text-white transition-all hover:bg-cRed"
