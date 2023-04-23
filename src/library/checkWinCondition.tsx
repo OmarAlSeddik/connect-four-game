@@ -1,7 +1,8 @@
 const checkWinCondition = (board: number[][]) => {
   const checkLine = (a = 0, b = 0, c = 0, d = 0) => {
-    return a != 0 && a == b && a == c && a == d;
+    return a !== 0 && a === b && a === c && a === d;
   };
+  // Horizontal
   for (let col = 0; col < 4; col++) {
     for (let row = 0; row < 6; row++) {
       if (
@@ -23,6 +24,7 @@ const checkWinCondition = (board: number[][]) => {
         };
     }
   }
+  // Vertical
   for (let col = 0; col < 7; col++) {
     for (let row = 0; row < 3; row++) {
       if (
@@ -44,6 +46,7 @@ const checkWinCondition = (board: number[][]) => {
         };
     }
   }
+  // Diagonal 1
   for (let col = 0; col < 4; col++) {
     for (let row = 0; row < 3; row++) {
       if (
@@ -65,6 +68,7 @@ const checkWinCondition = (board: number[][]) => {
         };
     }
   }
+  // Diagonal 2
   for (let col = 3; col < 7; col++) {
     for (let row = 0; row < 3; row++) {
       if (

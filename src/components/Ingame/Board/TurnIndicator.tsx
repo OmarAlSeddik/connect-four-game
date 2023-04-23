@@ -20,7 +20,7 @@ const TurnIndicator = () => {
         border-black bg-white p-[2rem] px-[5rem] text-center shadow-custom"
       >
         <h3 className="text-xs font-bold">
-          {gameOver.winner == 1 ? "PLAYER 1" : "PLAYER 2"}
+          {gameOver.winner === 1 ? "PLAYER 1" : "PLAYER 2"}
         </h3>
         <h2 className="text-lg font-bold">WINS</h2>
         <button

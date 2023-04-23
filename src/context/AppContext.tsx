@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import checkWinCondition from "~/library/checkWinCondition";
+import pickBestMove from "~/library/pickBestMove";
 
 type ContextType = {
   board: number[][];
@@ -94,12 +95,12 @@ export const AppContextProvider = ({ children }: PropsType) => {
 
   const play = useCallback(
     (col: number) => {
-      if (board?.[col]?.[5] == 0 && !gameOver.winner) {
+      if (board?.[col]?.[5] === 0 && !gameOver.winner) {
         setBoard((prev) => {
           const current = [...prev];
           current[col] = [...prev[col]];
           for (let row = 0; row < current?.[col].length; row++) {
-            if (current?.[col]?.[row] == 0) {
+            if (current?.[col]?.[row] === 0) {
               current[col][row] = isPlayer1Turn ? 1 : 2;
               break;
             }
@@ -114,12 +115,9 @@ export const AppContextProvider = ({ children }: PropsType) => {
   );
 
   const cpuAction = useCallback(() => {
-    let col: number;
-    do {
-      col = Math.floor(Math.random() * 6);
-    } while (board?.[col]?.[5] != 0);
+    const bestMove = pickBestMove(board, 2);
     setTimeout(() => {
-      play(col);
+      play(bestMove);
     }, 500);
   }, [board, play]);
 
@@ -154,7 +152,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
         winningChips,
       });
       setPlayer1Initiative((prev) => !prev);
-      winner == 1
+      winner === 1
         ? setPlayer1Score((prev) => prev + 1)
         : setPlayer2Score((prev) => prev + 1);
     } else if (!isPlayer1Turn && vsCPU) cpuAction();

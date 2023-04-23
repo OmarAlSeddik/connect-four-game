@@ -130,7 +130,7 @@ const Board = () => {
               key={`${i}${j}`}
               col={i}
               row={j}
-              color={chip == 1 ? "red" : "yellow"}
+              color={chip === 1 ? "red" : "yellow"}
             />
           ))
       )}
