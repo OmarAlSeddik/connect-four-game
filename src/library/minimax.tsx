@@ -6,44 +6,56 @@ import scorePosition from "./scorePosition";
 const minimax = (
   board: number[][],
   depth: number,
+  alpha: number,
+  beta: number,
   maximizingPlayer: boolean
 ): [number, number] => {
   const validLocations = getValidLocations(board);
   const { winner } = checkWinCondition(board);
+
+  // Static Evaluation
   if (winner) {
     if (winner === 1) return [3, -10000];
     else if (winner === 2) return [3, 10000];
     else return [3, 0];
-  } else if (depth === 0) return [3, scorePosition(board)];
+  } else if (depth === 0) {
+    return [3, scorePosition(board)];
+  }
 
+  // Maximizing Player (AI)
   if (maximizingPlayer) {
-    let score = -Infinity;
+    let maxEvaluation = -Infinity;
     let bestColumn = 3;
     for (const col of validLocations) {
       const tempBoard: number[][] = JSON.parse(JSON.stringify(board));
       dropChip(tempBoard, col, 2);
-      const newScore = minimax(tempBoard, depth - 1, false)[1];
-      if (newScore > score) {
-        score = newScore;
+      const evaluation = minimax(tempBoard, depth - 1, alpha, beta, false)[1];
+      if (evaluation > maxEvaluation) {
+        maxEvaluation = evaluation;
         bestColumn = col;
       }
+      alpha = Math.max(alpha, evaluation);
+      if (alpha >= beta) break;
     }
-    console.log(score);
-    return [bestColumn, score];
-  } else {
-    let score = Infinity;
+    return [bestColumn, maxEvaluation];
+  }
+
+  // Minimizing Player (Human)
+  else {
+    let minEvaluation = Infinity;
     let bestColumn = 3;
     for (const col of validLocations) {
       const tempBoard: number[][] = JSON.parse(JSON.stringify(board));
       dropChip(tempBoard, col, 1);
-      const newScore = minimax(tempBoard, depth - 1, true)[1];
-      if (newScore < score) {
-        score = newScore;
+      const evaluation = minimax(tempBoard, depth - 1, alpha, beta, true)[1];
+      if (evaluation < minEvaluation) {
+        minEvaluation = evaluation;
         bestColumn = col;
       }
+      beta = Math.min(beta, evaluation);
+      if (alpha >= beta) break;
     }
-    console.log(score);
-    return [bestColumn, score];
+    return [bestColumn, minEvaluation];
   }
 };
 

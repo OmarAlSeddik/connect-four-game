@@ -92,7 +92,8 @@ const checkWinCondition = (board: number[][]) => {
         };
     }
   }
-  if (getValidLocations.length === 0)
+  const validLocations = getValidLocations(board);
+  if (validLocations.length === 0)
     return {
       winner: 3,
       winningChips: [],

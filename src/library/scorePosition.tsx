@@ -15,7 +15,7 @@ const scorePosition = (board: number[][]) => {
     else if (cpuCount === 3 && emptyCount === 1) score += 5;
     else if (cpuCount === 2 && emptyCount === 2) score += 1;
 
-    if (playerCount === 3 && emptyCount === 1) score -= 5;
+    // if (playerCount === 3 && emptyCount === 1) score -= 50;
   };
 
   // Score Center

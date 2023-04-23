@@ -116,7 +116,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
 
   const cpuAction = useCallback(() => {
     // const bestMove = pickBestMove(board, 2);
-    const [bestMove] = minimax(board, 5, true);
+    const [bestMove] = minimax(board, 7, -Infinity, Infinity, true);
     setTimeout(() => {
       play(bestMove);
     }, 500);
@@ -147,15 +147,18 @@ export const AppContextProvider = ({ children }: PropsType) => {
 
   useEffect(() => {
     const { winner, winningChips } = checkWinCondition(board);
+    console.log(winner);
     if (winner && !gameOver.winner) {
       setGameOver({
         winner,
         winningChips,
       });
       setPlayer1Initiative((prev) => !prev);
-      winner === 1
-        ? setPlayer1Score((prev) => prev + 1)
-        : setPlayer2Score((prev) => prev + 1);
+      if (winner !== 3) {
+        winner === 1
+          ? setPlayer1Score((prev) => prev + 1)
+          : setPlayer2Score((prev) => prev + 1);
+      }
     } else if (!isPlayer1Turn && vsCPU) cpuAction();
   }, [board, cpuAction, gameOver.winner, isPlayer1Turn, vsCPU]);
 
