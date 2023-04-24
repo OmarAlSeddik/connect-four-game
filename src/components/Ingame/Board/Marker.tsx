@@ -18,7 +18,7 @@ const Marker = ({ markerPosition }: { markerPosition: string }) => {
       alt="Active Column Marker"
       height={26}
       width={32}
-      className={`absolute ${markerPosition} top-0 hidden translate-x-[60%] translate-y-[-100%] lg:block`}
+      className={`absolute ${markerPosition} bottom-full hidden translate-x-[50%] animate-bounce lg:block`}
     />
   );
 };

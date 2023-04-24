@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <meta charSet="UTF-8" />
+      <meta name="theme-color" content="#5c2dd5" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta
         name="viewport"
@@ -18,7 +19,7 @@ export default function Document() {
       />
       <link rel="icon" href="favicon.ico" />
       <title>Connect Four Game</title>
-      <body className="font-sans font-medium">
+      <body className="overflow-hidden font-sans font-medium">
         <Main />
         <NextScript />
       </body>

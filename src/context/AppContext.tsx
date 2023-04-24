@@ -147,7 +147,6 @@ export const AppContextProvider = ({ children }: PropsType) => {
 
   useEffect(() => {
     const { winner, winningChips } = checkWinCondition(board);
-    console.log(winner);
     if (winner && !gameOver.winner) {
       setGameOver({
         winner,

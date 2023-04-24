@@ -14,25 +14,25 @@ const Board = () => {
     const event_offsetX = event.pageX - currentTargetRect.left;
     switch (true) {
       case event_offsetX > 17 && 105 > event_offsetX:
-        setMarkerPosition("left-[calc(17px+88px*0)]");
+        setMarkerPosition("left-[calc(35px+88px*0)]");
         break;
       case event_offsetX > 105 && 193 > event_offsetX:
-        setMarkerPosition("left-[calc(17px+88px*1)]");
+        setMarkerPosition("left-[calc(35px+88px*1)]");
         break;
       case event_offsetX > 193 && 281 > event_offsetX:
-        setMarkerPosition("left-[calc(17px+88px*2)]");
+        setMarkerPosition("left-[calc(35px+88px*2)]");
         break;
       case event_offsetX > 281 && 369 > event_offsetX:
-        setMarkerPosition("left-[calc(17px+88px*3)]");
+        setMarkerPosition("left-[calc(35px+88px*3)]");
         break;
       case event_offsetX > 369 && 457 > event_offsetX:
-        setMarkerPosition("left-[calc(17px+88px*4)]");
+        setMarkerPosition("left-[calc(35px+88px*4)]");
         break;
       case event_offsetX > 457 && 545 > event_offsetX:
-        setMarkerPosition("left-[calc(17px+88px*5)]");
+        setMarkerPosition("left-[calc(35px+88px*5)]");
         break;
       case event_offsetX > 545 && 633 > event_offsetX:
-        setMarkerPosition("left-[calc(17px+88px*6)]");
+        setMarkerPosition("left-[calc(35px+88px*6)]");
         break;
     }
   };

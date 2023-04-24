@@ -20,7 +20,7 @@ const Ingame = () => {
   }
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center bg-cLight">
+    <>
       <Modal />
       <div
         className={`absolute bottom-0 h-[12.5rem] w-full rounded-t-[3.75rem] ${bgColor}`}
@@ -54,7 +54,7 @@ const Ingame = () => {
         <Board />
         <Score player={2} />
       </div>
-    </main>
+    </>
   );
 };
 
