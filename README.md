@@ -4,8 +4,8 @@ This is a solution to Frontend Mentor's [Connect Four game challenge](https://ww
 
 ## Links
 
-- Live Link to be uploaded...
-- Solution Link to be uploaded...
+- [Live Link](https://connect-four-26071997.netlify.app/)
+- [Solution Link](https://www.frontendmentor.io/solutions/nextjs-typescript-tailwind-framermotion-with-minimax-ai-8_2kup5D39)
 
 ## Features
 
@@ -24,4 +24,8 @@ This is a solution to Frontend Mentor's [Connect Four game challenge](https://ww
 
 ## Screenshots
 
-To be uploaded...
+<p float="left">
+  <img src="public/screenshots/screenshot_1.png" width="32%" />
+  <img src="public/screenshots/screenshot_2.png" width="32%" /> 
+  <img src="/public/screenshots/screenshot_3.png" width="32%" />
+</p>
