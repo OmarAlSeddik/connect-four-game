@@ -12,12 +12,12 @@ const MainMenu = () => {
       sm:bg-cLight sm:p-[2rem] sm:shadow-custom"
     >
       <Image src="images/logo.svg" alt="logo" width={52} height={52} />
-      <div className="relative flex h-full w-full flex-col items-center gap-[1rem]">
+      <div className="relative flex h-full w-full flex-col items-center gap-[1.5rem]">
         <Link
           onClick={() => start(0)}
           href="/ingame"
-          className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
-            border-[3px] border-black bg-cYellow p-[1.25rem] text-left text-md font-bold shadow-custom
+          className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem] border-[3px]
+            border-black bg-cYellow p-[1.25rem] text-left text-md font-bold shadow-custom
             transition-all active:shadow-customActive"
         >
           PLAY VS PLAYER
@@ -32,8 +32,8 @@ const MainMenu = () => {
           onClick={() => start(1)}
           href="/ingame"
           className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
-            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold shadow-custom
-            transition-all active:shadow-customActive"
+            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold text-white
+            shadow-custom transition-all active:shadow-customActive"
         >
           PLAY VS CPU (EASY)
           <Image
@@ -47,8 +47,8 @@ const MainMenu = () => {
           onClick={() => start(2)}
           href="/ingame"
           className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
-            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold shadow-custom
-            transition-all active:shadow-customActive"
+            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold text-white
+            shadow-custom transition-all active:shadow-customActive"
         >
           PLAY VS CPU (MED)
           <Image
@@ -62,8 +62,8 @@ const MainMenu = () => {
           onClick={() => start(3)}
           href="/ingame"
           className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
-            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold shadow-custom
-            transition-all active:shadow-customActive"
+            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold text-white
+            shadow-custom transition-all active:shadow-customActive"
         >
           PLAY VS CPU (HARD)
           <Image

@@ -18,7 +18,7 @@ const Modal = () => {
       px-[1.25rem] py-[1.875rem] shadow-custom sm:px-[2.5rem] sm:py-[3.125rem]"
       >
         <h1 className="text-lg font-bold text-white">PAUSE</h1>
-        <div className="relative flex h-full w-full flex-col items-center gap-[1.875rem]">
+        <div className="relative flex h-full w-full flex-col items-center gap-[1.5rem]">
           <button
             onClick={togglePause}
             className="w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
@@ -39,8 +39,8 @@ const Modal = () => {
             RESTART
           </button>
           <Link
-            className="w-full max-w-[25rem] rounded-[1.25rem]
-           border-[3px] border-black bg-cRed p-[1.25rem] text-center text-md font-bold shadow-custom
+            className="w-full max-w-[25rem] rounded-[1.25rem] border-[3px]
+           border-black bg-cRed p-[1.25rem] text-center text-md font-bold text-white shadow-custom
            transition-all active:shadow-customActive"
             href="/"
           >
