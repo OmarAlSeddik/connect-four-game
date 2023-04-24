@@ -20,8 +20,7 @@ export default {
       },
       boxShadow: {
         custom: "0 0.625rem 0 #000",
-        customHover: "0 0.625rem 0 #5c2dd5",
-        customActive: "0 0.3125rem 0 #5c2dd5",
+        customActive: "0 0.625rem 0 #5c2dd5",
       },
       fontSize: {
         md: ["1.5rem", "1.9375rem"],

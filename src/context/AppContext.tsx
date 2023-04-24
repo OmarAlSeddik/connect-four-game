@@ -17,9 +17,9 @@ type ContextType = {
   gameOver: { winner: number; winningChips: string[] };
   player1Initiative: boolean;
   isPlayer1Turn: boolean;
-  vsCPU: boolean;
+  vsCPU: number;
   isMobile: boolean;
-  start: (vsCPU: boolean) => void;
+  start: (vsCPU: number) => void;
   play: (col: number) => void;
   restart: () => void;
   togglePause: () => void;
@@ -42,9 +42,9 @@ const defaultState = {
   gameOver: { winner: 0, winningChips: [] },
   player1Initiative: true,
   isPlayer1Turn: true,
-  vsCPU: false,
+  vsCPU: 0,
   isMobile: false,
-  start: function (_vsCPU: boolean) {
+  start: function (_vsCPU: number) {
     return;
   },
   play: function (_col: number) {
@@ -89,7 +89,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
   });
   const [player1Initiative, setPlayer1Initiative] = useState(true);
   const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
-  const [vsCPU, setVsCPU] = useState(false);
+  const [vsCPU, setVsCPU] = useState(0);
   const isMobile =
     typeof window !== "undefined" ? window.innerWidth < 640 : false;
 
@@ -116,11 +116,26 @@ export const AppContextProvider = ({ children }: PropsType) => {
 
   const cpuAction = useCallback(() => {
     // const bestMove = pickBestMove(board, 2);
-    const [bestMove] = minimax(board, 7, -Infinity, Infinity, true);
+    let depth;
+    switch (vsCPU) {
+      case 1:
+        depth = 1;
+        break;
+      case 2:
+        depth = 4;
+        break;
+      case 3:
+        depth = 7;
+        break;
+      default:
+        depth = 7;
+        break;
+    }
+    const [bestMove] = minimax(board, depth, -Infinity, Infinity, true);
     setTimeout(() => {
       play(bestMove);
     }, 500);
-  }, [board, play]);
+  }, [board, play, vsCPU]);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -161,7 +176,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
     } else if (!isPlayer1Turn && vsCPU) cpuAction();
   }, [board, cpuAction, gameOver.winner, isPlayer1Turn, vsCPU]);
 
-  const start = (vsCPU: boolean) => {
+  const start = (vsCPU: number) => {
     setBoard([
       [0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0],

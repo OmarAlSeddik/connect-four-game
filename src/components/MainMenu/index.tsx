@@ -7,18 +7,18 @@ const MainMenu = () => {
 
   return (
     <div
-      className="flex h-[27.1875rem] w-[30rem] flex-col items-center
-      gap-[2rem] rounded-[2.5rem] px-[1rem] py-[1rem] sm:border-[3px] sm:border-black
-      sm:bg-cLight sm:px-[2rem] sm:shadow-custom"
+      className="flex w-[30rem] flex-col items-center
+      gap-[2rem] rounded-[2.5rem] p-[1rem] sm:border-[3px] sm:border-black
+      sm:bg-cLight sm:p-[2rem] sm:shadow-custom"
     >
       <Image src="images/logo.svg" alt="logo" width={52} height={52} />
-      <div className="relative flex h-full w-full flex-col items-center">
+      <div className="relative flex h-full w-full flex-col items-center gap-[1rem]">
         <Link
-          onClick={() => start(false)}
+          onClick={() => start(0)}
           href="/ingame"
-          className="absolute flex h-[4.5rem] w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
+          className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
             border-[3px] border-black bg-cYellow p-[1.25rem] text-left text-md font-bold shadow-custom
-            transition-all hover:shadow-customHover active:mt-[0.3125rem] active:shadow-customActive"
+            transition-all active:shadow-customActive"
         >
           PLAY VS PLAYER
           <Image
@@ -29,13 +29,13 @@ const MainMenu = () => {
           />
         </Link>
         <Link
-          onClick={() => start(true)}
+          onClick={() => start(1)}
           href="/ingame"
-          className="absolute top-1/3 flex h-[4.5rem] w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
+          className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
             border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold shadow-custom
-            transition-all hover:shadow-customHover active:mt-[0.3125rem] active:shadow-customActive"
+            transition-all active:shadow-customActive"
         >
-          PLAY VS CPU
+          PLAY VS CPU (EASY)
           <Image
             src="images/player-vs-cpu.svg"
             alt="logo"
@@ -44,9 +44,39 @@ const MainMenu = () => {
           />
         </Link>
         <Link
-          className="absolute top-2/3 h-[4.5rem] w-full max-w-[25rem] rounded-[1.25rem]
+          onClick={() => start(2)}
+          href="/ingame"
+          className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
+            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold shadow-custom
+            transition-all active:shadow-customActive"
+        >
+          PLAY VS CPU (MED)
+          <Image
+            src="images/player-vs-cpu.svg"
+            alt="logo"
+            width={48}
+            height={48}
+          />
+        </Link>
+        <Link
+          onClick={() => start(3)}
+          href="/ingame"
+          className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
+            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold shadow-custom
+            transition-all active:shadow-customActive"
+        >
+          PLAY VS CPU (HARD)
+          <Image
+            src="images/player-vs-cpu.svg"
+            alt="logo"
+            width={48}
+            height={48}
+          />
+        </Link>
+        <Link
+          className="w-full max-w-[25rem] rounded-[1.25rem]
            border-[3px] border-black bg-white p-[1.25rem] text-left text-md font-bold shadow-custom
-           transition-all hover:shadow-customHover active:mt-[0.3125rem] active:shadow-customActive"
+           transition-all active:shadow-customActive"
           href="/rules"
         >
           GAME RULES
