@@ -36,7 +36,7 @@ const scorePosition = (board: number[][]) => {
         board?.[col]?.[row + 2],
         board?.[col]?.[row + 3],
       ];
-      evaluate(slice);
+      evaluate(slice as number[]);
     }
   }
   // Score Horizontal
@@ -48,7 +48,7 @@ const scorePosition = (board: number[][]) => {
         board?.[col + 2]?.[row],
         board?.[col + 3]?.[row],
       ];
-      evaluate(slice);
+      evaluate(slice as number[]);
     }
   }
   // Score Diagonal 1
@@ -60,7 +60,7 @@ const scorePosition = (board: number[][]) => {
         board?.[col + 2]?.[row + 2],
         board?.[col + 3]?.[row + 3],
       ];
-      evaluate(slice);
+      evaluate(slice as number[]);
     }
   }
   // Score Diagonal 2
@@ -72,7 +72,7 @@ const scorePosition = (board: number[][]) => {
         board?.[col - 2]?.[row + 2],
         board?.[col - 3]?.[row + 3],
       ];
-      evaluate(slice);
+      evaluate(slice as number[]);
     }
   }
 

@@ -42,7 +42,7 @@ const Score = ({ player }: { player: number }) => {
         `}
       />
       <h2 className="font-bold sm:text-sm">{text}</h2>
-      <h2 className="text-mm font-bold sm:text-lg">{score}</h2>
+      <h2 className="text-md font-bold sm:text-lg">{score}</h2>
     </div>
   );
 };

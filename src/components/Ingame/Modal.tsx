@@ -22,14 +22,14 @@ const Modal = () => {
           <button
             onClick={togglePause}
             className="absolute h-[4.5rem] w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
-            border-[3px] border-black bg-white p-[1.25rem] text-center text-mm font-bold shadow-custom
+            border-[3px] border-black bg-white p-[1.25rem] text-center text-md font-bold shadow-custom
             transition-all hover:shadow-customHover active:mt-[0.3125rem] active:shadow-customActive"
           >
             CONTINUE GAME
           </button>
           <button
             className="absolute top-1/3 h-[4.5rem] w-full max-w-[25rem] rounded-[1.25rem]
-            border-[3px] border-black bg-white p-[1.25rem] text-center text-mm font-bold shadow-custom
+            border-[3px] border-black bg-white p-[1.25rem] text-center text-md font-bold shadow-custom
             transition-all hover:shadow-customHover active:mt-[0.3125rem] active:shadow-customActive"
             onClick={() => {
               restart();
@@ -40,7 +40,7 @@ const Modal = () => {
           </button>
           <Link
             className="absolute top-2/3 h-[4.5rem] w-full max-w-[25rem] rounded-[1.25rem]
-           border-[3px] border-black bg-cRed p-[1.25rem] text-center text-mm font-bold shadow-custom
+           border-[3px] border-black bg-cRed p-[1.25rem] text-center text-md font-bold shadow-custom
            transition-all hover:shadow-customHover active:mt-[0.3125rem] active:shadow-customActive"
             href="/"
           >

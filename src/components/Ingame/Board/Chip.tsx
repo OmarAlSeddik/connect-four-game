@@ -59,7 +59,7 @@ const Chip = ({
 
   return (
     <div
-      className={`absolute ${xPosition} ${yPosition} animate-chipDrop z-20 h-[45px] w-[40px] sm:h-[75px] sm:w-[70px]`}
+      className={`absolute ${xPosition} ${yPosition} z-20 h-[45px] w-[40px] animate-chipDrop sm:h-[75px] sm:w-[70px]`}
     >
       {gameOver.winningChips.includes(`${col} ${row}`) && (
         <div

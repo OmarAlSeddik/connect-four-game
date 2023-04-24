@@ -23,7 +23,7 @@ const Rules = () => {
   bg-white px-[1rem] py-[2rem] shadow-custom sm:px-[2rem]"
     >
       <motion.h1
-        transition={{ duration: 1.5 }}
+        transition={{ duration: 1.5, delay: 0.2 }}
         variants={variants}
         initial="initial"
         animate="animate"
@@ -33,16 +33,16 @@ const Rules = () => {
       </motion.h1>
       <div className="flex flex-col gap-[1rem]">
         <motion.h2
-          transition={{ duration: 1.5, delay: 0.2 }}
+          transition={{ duration: 1.5, delay: 0.4 }}
           variants={variants}
           initial="initial"
           animate="animate"
-          className="text-mm font-bold text-cDark"
+          className="text-md font-bold text-cDark"
         >
           OBJECTIVE
         </motion.h2>
         <motion.p
-          transition={{ duration: 1.5, delay: 0.4 }}
+          transition={{ duration: 1.5, delay: 0.6 }}
           variants={variants}
           initial="initial"
           animate="animate"
@@ -53,11 +53,11 @@ const Rules = () => {
       </div>
       <div className="flex flex-col gap-[1rem]">
         <motion.h2
-          transition={{ duration: 1.5, delay: 0.6 }}
+          transition={{ duration: 1.5, delay: 0.8 }}
           variants={variants}
           initial="initial"
           animate="animate"
-          className="text-mm font-bold text-cDark"
+          className="text-md font-bold text-cDark"
         >
           HOW TO PLAY
         </motion.h2>

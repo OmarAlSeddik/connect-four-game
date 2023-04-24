@@ -98,8 +98,8 @@ export const AppContextProvider = ({ children }: PropsType) => {
       if (board?.[col]?.[5] === 0 && !gameOver.winner) {
         setBoard((prev) => {
           const current = [...prev];
-          current[col] = [...prev[col]];
-          for (let row = 0; row < current?.[col].length; row++) {
+          current[col] = [...prev[col]] as number[];
+          for (let row = 0; row < current[col].length; row++) {
             if (current?.[col]?.[row] === 0) {
               current[col][row] = isPlayer1Turn ? 1 : 2;
               break;

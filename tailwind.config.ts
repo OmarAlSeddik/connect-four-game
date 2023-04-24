@@ -24,7 +24,7 @@ export default {
         customActive: "0 0.3125rem 0 #5c2dd5",
       },
       fontSize: {
-        mm: ["1.5rem", "1.9375rem"],
+        md: ["1.5rem", "1.9375rem"],
       },
       animation: {
         chipDrop: "chipDrop 0.75s linear",

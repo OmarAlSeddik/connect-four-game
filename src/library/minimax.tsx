@@ -27,7 +27,7 @@ const minimax = (
     let maxEvaluation = -Infinity;
     let bestColumn = 3;
     for (const col of validLocations) {
-      const tempBoard: number[][] = JSON.parse(JSON.stringify(board));
+      const tempBoard = JSON.parse(JSON.stringify(board)) as number[][];
       dropChip(tempBoard, col, 2);
       const evaluation = minimax(tempBoard, depth - 1, alpha, beta, false)[1];
       if (evaluation > maxEvaluation) {
@@ -45,7 +45,7 @@ const minimax = (
     let minEvaluation = Infinity;
     let bestColumn = 3;
     for (const col of validLocations) {
-      const tempBoard: number[][] = JSON.parse(JSON.stringify(board));
+      const tempBoard = JSON.parse(JSON.stringify(board)) as number[][];
       dropChip(tempBoard, col, 1);
       const evaluation = minimax(tempBoard, depth - 1, alpha, beta, true)[1];
       if (evaluation < minEvaluation) {

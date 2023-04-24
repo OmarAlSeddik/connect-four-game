@@ -9,7 +9,7 @@ const pickBestMove = (board: number[][], chip: number) => {
   let bestScore = -Infinity;
   let bestColumn = 3;
   for (const col of validLocations) {
-    const tempBoard: number[][] = JSON.parse(JSON.stringify(board));
+    const tempBoard = JSON.parse(JSON.stringify(board)) as number[][];
     dropChip(tempBoard, col, chip);
     const score = scorePosition(tempBoard);
     if (score > bestScore && score !== 0) {
