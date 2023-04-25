@@ -1,3 +1,4 @@
+// Makes the first 7 "perfect" moves if it starts first!
 const scorePosition = (board: number[][]) => {
   const empty = 0;
   const playerChip = 1;
@@ -14,8 +15,7 @@ const scorePosition = (board: number[][]) => {
 
     if (cpuCount === 3 && emptyCount === 1) score += 5;
     else if (cpuCount === 2 && emptyCount === 2) score += 1;
-
-    if (playerCount === 3 && emptyCount === 1) score -= 50;
+    if (playerCount === 3 && emptyCount === 1) score -= 5;
   };
 
   // Score Center
@@ -65,7 +65,7 @@ const scorePosition = (board: number[][]) => {
       evaluate(slice as number[]);
     }
   }
-  
+
   // Score Diagonal 2
   for (let col = 3; col < 7; col++) {
     for (let row = 0; row < 3; row++) {
