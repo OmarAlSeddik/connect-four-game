@@ -15,9 +15,9 @@ const TurnIndicator = () => {
   if (gameOver.winner)
     return (
       <div
-        className="absolute bottom-0 left-1/2 z-40 flex translate-x-[-50%]
-        translate-y-[90%] flex-col rounded-[1.25rem] border-[3px]
-        border-black bg-white p-[2rem] px-[5rem] text-center shadow-custom"
+        className="absolute bottom-0 left-1/2 z-40 flex h-[10rem] w-[17.8125rem]
+        translate-x-[-50%] translate-y-[90%] flex-col items-center justify-center rounded-[1.25rem]
+        border-[3px] border-black bg-white text-center shadow-custom"
       >
         <h3
           className={`text-xs font-bold ${

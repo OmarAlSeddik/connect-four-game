@@ -23,27 +23,32 @@ const Ingame = () => {
     <>
       <Modal />
       <div
-        className={`absolute bottom-0 h-[12.5rem] w-full rounded-t-[3.75rem] ${bgColor}`}
+        className={`absolute bottom-0 h-[20%] w-full rounded-t-[3.75rem] sm:h-[12.5rem] ${bgColor}`}
       />
-      <div className="mb-[3.5rem] mt-[2rem] flex w-[40rem] max-w-[90%] items-center justify-between">
+      <div
+        className="mx-auto flex w-[39.5rem] max-w-[90%] items-center
+      justify-between py-[1rem] tall:pb-[3.5rem] tall:pt-[2rem]"
+      >
         <button
-          className="rounded-[1.25rem] bg-cDark px-[1rem] py-[0.5rem] text-xs
+          className="w-[6.75rem] rounded-[1.25rem] bg-cDark py-[0.5rem] text-xs
         font-bold text-white transition-all hover:bg-cRed"
           onClick={togglePause}
         >
           MENU
         </button>
-        <Image src="images/logo.svg" alt="logo" width={48} height={48} />
+        <div className="relative h-[2.5rem] w-[2.5rem] sm:h-[3.25rem] sm:w-[3.25rem]">
+          <Image src="images/logo.svg" alt="logo" fill />
+        </div>
         <button
-          className="rounded-[1.25rem] bg-cDark px-[1rem] py-[0.5rem] text-xs
+          className="w-[6.75rem] rounded-[1.25rem] bg-cDark py-[0.5rem] text-xs
         font-bold text-white transition-all hover:bg-cRed"
           onClick={restart}
         >
           RESTART
         </button>
       </div>
-      <div className="flex flex-col items-center justify-center gap-[2.5rem] lg:hidden">
-        <div className="flex gap-[1rem] sm:gap-[2rem]">
+      <div className="flex h-full flex-col items-center gap-[1rem] lg:hidden tall:gap-[2.5rem]">
+        <div className="flex max-w-[90%] gap-[1rem] sm:gap-[2rem]">
           <Score player={1} />
           <Score player={2} />
         </div>

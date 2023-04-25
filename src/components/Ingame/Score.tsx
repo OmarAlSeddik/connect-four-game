@@ -23,10 +23,10 @@ const Score = ({ player }: { player: number }) => {
     <div
       className={`${
         player === 1 ? "sm:flex-row" : "sm:flex-row-reverse"
-      } relative flex w-[10.5625rem] flex-col items-center justify-between
+      } relative flex h-[5.0625rem] w-[8.875rem] flex-col items-center justify-between
       rounded-[1.25rem] border-[3px] border-black bg-white
-      py-[0.5rem] shadow-custom sm:w-[18.5rem] sm:gap-[1rem] sm:px-[3rem] sm:py-[1rem] lg:w-[8.8125rem]
-      lg:flex-col lg:p-0 lg:pb-[1rem] lg:pt-[3rem]`}
+      py-[0.5rem] shadow-custom sm:h-[6.25rem] sm:w-[17rem] sm:justify-around lg:h-[10rem] lg:w-[8.8125rem]
+      lg:flex-col lg:justify-end`}
     >
       <Image
         src={src}

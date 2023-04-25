@@ -18,7 +18,7 @@ const MainMenu = () => {
           href="/ingame"
           className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem] border-[3px]
             border-black bg-cYellow p-[1.25rem] text-left text-md font-bold shadow-custom
-            transition-all active:shadow-customActive"
+            transition-all desktopHover:hover:border-cDark desktopHover:hover:shadow-customHover"
         >
           PLAY VS PLAYER
           <Image
@@ -32,8 +32,8 @@ const MainMenu = () => {
           onClick={() => start(1)}
           href="/ingame"
           className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
-            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold text-white
-            shadow-custom transition-all active:shadow-customActive"
+            border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold text-white shadow-custom
+            transition-all desktopHover:hover:border-cDark desktopHover:hover:shadow-customHover"
         >
           PLAY VS CPU (EASY)
           <Image
@@ -48,7 +48,7 @@ const MainMenu = () => {
           href="/ingame"
           className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
             border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold text-white
-            shadow-custom transition-all active:shadow-customActive"
+            shadow-custom transition-all desktopHover:hover:border-cDark desktopHover:hover:shadow-customHover"
         >
           PLAY VS CPU (MED)
           <Image
@@ -63,7 +63,7 @@ const MainMenu = () => {
           href="/ingame"
           className="flex w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
             border-[3px] border-black bg-cRed p-[1.25rem] text-left text-md font-bold text-white
-            shadow-custom transition-all active:shadow-customActive"
+            shadow-custom transition-all desktopHover:hover:border-cDark desktopHover:hover:shadow-customHover"
         >
           PLAY VS CPU (HARD)
           <Image
@@ -76,7 +76,7 @@ const MainMenu = () => {
         <Link
           className="w-full max-w-[25rem] rounded-[1.25rem]
            border-[3px] border-black bg-white p-[1.25rem] text-left text-md font-bold shadow-custom
-           transition-all active:shadow-customActive"
+           transition-all desktopHover:hover:border-cDark desktopHover:hover:shadow-customHover"
           href="/rules"
         >
           GAME RULES

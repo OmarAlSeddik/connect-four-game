@@ -15,7 +15,7 @@ const IngamePage: NextPage = () => {
         <meta name="description" content="Ingame" />
       </Head>
       <motion.main
-        className="absolute left-0 top-0 flex h-screen w-full flex-col items-center bg-cLight"
+        className="absolute inset-0 bg-cLight"
         transition={{ duration: "0.75", ease: "easeOut" }}
         variants={variants}
         initial="initial"

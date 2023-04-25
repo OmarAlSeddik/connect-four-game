@@ -16,7 +16,7 @@ const MainMenuPage: NextPage = () => {
         <meta name="description" content="Main Menu" />
       </Head>
       <motion.main
-        className="absolute left-0 top-0 flex h-screen w-full items-center justify-center bg-cDark"
+        className="absolute inset-0 flex items-center justify-center bg-cDark"
         transition={{ duration: "0.75", ease: "easeOut" }}
         variants={variants}
         initial="initial"

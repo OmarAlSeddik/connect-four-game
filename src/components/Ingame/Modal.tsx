@@ -23,14 +23,14 @@ const Modal = () => {
             onClick={togglePause}
             className="w-full max-w-[25rem] items-center justify-between rounded-[1.25rem]
             border-[3px] border-black bg-white p-[1.25rem] text-center text-md font-bold shadow-custom
-            transition-all active:shadow-customActive"
+            transition-all desktopHover:hover:border-cDark desktopHover:hover:shadow-customHover"
           >
             CONTINUE GAME
           </button>
           <button
             className="w-full max-w-[25rem] rounded-[1.25rem] border-[3px] border-black
-            bg-white p-[1.25rem] text-center text-md font-bold
-            shadow-custom transition-all active:shadow-customActive"
+            bg-white p-[1.25rem] text-center text-md font-bold shadow-custom
+            transition-all desktopHover:hover:border-cDark desktopHover:hover:shadow-customHover"
             onClick={() => {
               restart();
               togglePause();
@@ -41,7 +41,7 @@ const Modal = () => {
           <Link
             className="w-full max-w-[25rem] rounded-[1.25rem] border-[3px]
            border-black bg-cRed p-[1.25rem] text-center text-md font-bold text-white shadow-custom
-           transition-all active:shadow-customActive"
+           transition-all desktopHover:hover:border-cDark desktopHover:hover:shadow-customHover"
             href="/"
           >
             QUIT GAME

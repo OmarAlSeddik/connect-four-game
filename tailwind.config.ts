@@ -20,7 +20,9 @@ export default {
       },
       boxShadow: {
         custom: "0 0.625rem 0 #000",
-        customActive: "0 0.625rem 0 #5c2dd5",
+        custom2: "0 0.3125rem 0 #000",
+        customHover: "0 0.625rem 0 #5c2dd5",
+        customHover2: "0 0.3125rem 0 #7945ff",
       },
       fontSize: {
         md: ["1.5rem", "1.9375rem"],
@@ -33,6 +35,10 @@ export default {
           "0%": { transform: "translateY(-100vh)" },
           "100%": { transform: "translateY(0)" },
         },
+      },
+      screens: {
+        tall: { raw: "(min-height: 760px)" },
+        desktopHover: { raw: "(hover: hover)" },
       },
     },
   },

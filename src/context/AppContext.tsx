@@ -37,7 +37,7 @@ const defaultState = {
   ],
   player1Score: 0,
   player2Score: 0,
-  timer: 15,
+  timer: 30,
   isPaused: false,
   gameOver: { winner: 0, winningChips: [] },
   player1Initiative: true,
@@ -81,7 +81,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
   ]);
   const [player1Score, setPlayer1Score] = useState(0);
   const [player2Score, setPlayer2Score] = useState(0);
-  const [timer, setTimer] = useState(15);
+  const [timer, setTimer] = useState(30);
   const [isPaused, setIsPaused] = useState(false);
   const [gameOver, setGameOver] = useState<GameOverType>({
     winner: 0,
@@ -108,7 +108,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
           return [...current];
         });
         setIsPlayer1Turn((prev) => !prev);
-        setTimer(15);
+        setTimer(30);
       }
     },
     [board, gameOver.winner, isPlayer1Turn]
@@ -191,7 +191,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
     setPlayer1Score(0);
     setPlayer2Score(0);
     setIsPaused(false);
-    setTimer(15);
+    setTimer(30);
     setGameOver({
       winner: 0,
       winningChips: [],
@@ -213,7 +213,7 @@ export const AppContextProvider = ({ children }: PropsType) => {
       [0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0],
     ]);
-    setTimer(15);
+    setTimer(30);
     setGameOver({
       winner: 0,
       winningChips: [],
