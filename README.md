@@ -1,6 +1,6 @@
 # Connect Four Game
 
-This is a solution to Frontend Mentor's [Connect Four game challenge](https://www.frontendmentor.io/challenges/tic-tac-toe-game-Re7ZF_E2v) with bonus added functionality.
+This is a solution to Frontend Mentor's [Connect Four game challenge](https://www.frontendmentor.io/challenges/connect-four-game-6G8QVH923s) with bonus added functionality.
 
 ## Links
 
@@ -22,10 +22,18 @@ This is a solution to Frontend Mentor's [Connect Four game challenge](https://ww
 - Tailwind
 - Framer Motion
 
-## Screenshots
+## Desktop Screenshots
 
 <p float="left">
-  <img src="public/screenshots/screenshot_1.png" width="32%" />
-  <img src="public/screenshots/screenshot_2.png" width="32%" /> 
-  <img src="/public/screenshots/screenshot_3.png" width="32%" />
+  <img src="public/screenshots/desktop_screenshot_1.png" width="32%" />
+  <img src="public/screenshots/desktop_screenshot_2.png" width="32%" /> 
+  <img src="public/screenshots/desktop_screenshot_3.png" width="32%" />
+</p>
+
+## Mobile Screenshots
+
+<p float="left">
+  <img src="public/screenshots/mobile_screenshot_1.png" width="32%" />
+  <img src="public/screenshots/mobile_screenshot_2.png" width="32%" /> 
+  <img src="public/screenshots/mobile_screenshot_3.png" width="32%" />
 </p>
