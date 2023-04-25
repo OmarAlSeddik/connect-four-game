@@ -4,7 +4,7 @@ This is a solution to Frontend Mentor's [Connect Four game challenge](https://ww
 
 ## Links
 
-- [Live Link](https://connect-four-26071997.netlify.app/)
+- [Live Link](https://connect-four-game-omaralseddik.vercel.app/)
 - [Solution Link](https://www.frontendmentor.io/solutions/nextjs-typescript-tailwind-framermotion-with-minimax-ai-8_2kup5D39)
 
 ## Features
