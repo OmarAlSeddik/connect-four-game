@@ -27,15 +27,6 @@ export default {
       fontSize: {
         md: ["1.5rem", "1.9375rem"],
       },
-      animation: {
-        chipDrop: "chipDrop 0.75s linear",
-      },
-      keyframes: {
-        chipDrop: {
-          "0%": { transform: "translateY(-100vh)" },
-          "100%": { transform: "translateY(0)" },
-        },
-      },
       screens: {
         tall: { raw: "(min-height: 760px)" },
         desktopHover: { raw: "(hover: hover)" },

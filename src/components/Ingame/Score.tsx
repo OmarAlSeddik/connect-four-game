@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useAppContext } from "~/context/AppContext";
 
@@ -28,21 +29,30 @@ const Score = ({ player }: { player: number }) => {
       py-[0.5rem] shadow-custom sm:h-[6.25rem] sm:w-[17rem] sm:justify-around lg:h-[10rem] lg:w-[8.8125rem]
       lg:flex-col lg:justify-end`}
     >
-      <Image
-        src={src}
-        alt={text}
-        width={54}
-        height={59}
-        className={`absolute top-1/2 translate-y-[-50%] lg:left-1/2 lg:top-0 lg:translate-x-[-50%]
+      <div
+        className={`absolute top-1/2 h-[3.6875rem] w-[3.375rem] translate-y-[-50%]
+        lg:left-1/2 lg:top-0 lg:translate-x-[-50%]
         ${
           player === 1
             ? "right-full translate-x-[50%]"
             : "left-full translate-x-[-50%]"
         }
         `}
-      />
+      >
+        <Image src={src} alt={text} fill />
+      </div>
       <h2 className="font-bold sm:text-sm">{text}</h2>
-      <h2 className="text-md font-bold sm:text-lg">{score}</h2>
+      <motion.h2
+        key={score}
+        animate={{ scale: [1, 1.5, 1] }}
+        transition={{
+          duration: 0.5,
+          times: [0, 0.5, 1],
+        }}
+        className="text-md font-bold sm:text-lg"
+      >
+        {score}
+      </motion.h2>
     </div>
   );
 };

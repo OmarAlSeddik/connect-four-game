@@ -11,8 +11,8 @@ const scorePosition = (board: number[][]) => {
     const cpuCount = getCount(slice ?? [], cpuChip);
     const emptyCount = getCount(slice ?? [], empty);
     const playerCount = getCount(slice ?? [], playerChip);
-    if (cpuCount === 4) score += 1000;
-    else if (cpuCount === 3 && emptyCount === 1) score += 5;
+
+    if (cpuCount === 3 && emptyCount === 1) score += 5;
     else if (cpuCount === 2 && emptyCount === 2) score += 1;
 
     if (playerCount === 3 && emptyCount === 1) score -= 50;
@@ -39,6 +39,7 @@ const scorePosition = (board: number[][]) => {
       evaluate(slice as number[]);
     }
   }
+
   // Score Horizontal
   for (let col = 0; col < 4; col++) {
     for (let row = 0; row < 6; row++) {
@@ -51,6 +52,7 @@ const scorePosition = (board: number[][]) => {
       evaluate(slice as number[]);
     }
   }
+
   // Score Diagonal 1
   for (let col = 0; col < 4; col++) {
     for (let row = 0; row < 3; row++) {
@@ -63,6 +65,7 @@ const scorePosition = (board: number[][]) => {
       evaluate(slice as number[]);
     }
   }
+  
   // Score Diagonal 2
   for (let col = 3; col < 7; col++) {
     for (let row = 0; row < 3; row++) {
